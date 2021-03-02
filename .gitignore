@@ -2,7 +2,7 @@
 
 .env
 tailwind.output.css
-
+yarn.lock
 # dependencies
 /node_modules
 /.pnp
