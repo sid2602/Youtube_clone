@@ -12,7 +12,7 @@ function App() {
           <Navbar />
         </NavProvider>
         <Router>
-          <main className=" h-full bg-red-100 m-0 py-2 md:p-6">
+          <main className=" h-full m-0 py-2 md:p-6 bg-gray-50">
             <Switch>
               <Route path="/" component={HomePage} />
             </Switch>

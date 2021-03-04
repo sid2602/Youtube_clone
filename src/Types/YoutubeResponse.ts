@@ -23,8 +23,8 @@ export type YTItems = {
     publishedAt: string;
     liveBroadcastContent: string;
     publishTime: string;
-    chanelId: string;
-    chanelTitle: string;
+    channelId: string;
+    channelTitle: string;
     description: string;
     thumbnails: {
       default: thumbinal;
