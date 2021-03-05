@@ -5,7 +5,7 @@ export default function NavBar() {
   const { searchMobile } = useNav();
 
   return (
-    <header className="flex items-center border-b-2 h-12 sticky top-0 bg-white">
+    <header className="flex items-center border-b-2 h-12 sticky top-0 bg-white z-50">
       {searchMobile ? <MobileSearch /> : <RegularNavbar />}
     </header>
   );

@@ -4,11 +4,14 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Roboto";
 }
 
 html,
-body {
-  height: 100vh;
+body,
+#root,
+.App {
+  min-height: 100vh;
 }
 
 button:focus {

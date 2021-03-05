@@ -9,7 +9,7 @@ export default function HomePage() {
 
   return (
     <section className="flex flex-wrap justify-center sm:justify-around">
-      {loading
+      {loading && !error
         ? placeholders.map((item) => <VideoPlaceholder key={item} />)
         : videos.items.map((item) => (
             <VideoPreview video={item} key={item.id.videoId} />

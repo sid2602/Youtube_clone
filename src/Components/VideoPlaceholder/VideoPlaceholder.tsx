@@ -1,5 +1,3 @@
-import { useVideo } from "../../Context/VideoContext";
-
 export default function VideoPlaceholder() {
   return (
     <article className="w-full max-w-xs mb-6 sm:my-6">

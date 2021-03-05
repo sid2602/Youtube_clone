@@ -1,12 +1,26 @@
 import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNav } from "../../Context/NavContext";
+import { useVideo } from "../../Context/VideoContext";
+import { useRef } from "react";
+import { useHistory } from "react-router-dom";
+
 export default function Navbar() {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const { setSearchMobile } = useNav();
+  const { searchVideo } = useVideo();
+  let history = useHistory();
 
   const onButtonClick = () => {
     if (window.innerWidth < 768) {
       setSearchMobile(true);
+    } else {
+      const value = inputRef.current?.value;
+      if (value) {
+        searchVideo(value);
+        history.push("/search");
+      }
     }
   };
 
@@ -23,6 +37,7 @@ export default function Navbar() {
         <input
           type="text"
           className="hidden md:block border-2 w-10/12 max-w-md px-2"
+          ref={inputRef}
         />
         <button
           className="w-10 h-10 rounded-full hover:bg-gray-200 transition"
