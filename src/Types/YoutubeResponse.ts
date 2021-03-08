@@ -1,6 +1,7 @@
 type YTResponseTypes = {
   kind: string;
   nextPageToken: string;
+  prevPageToken: string | undefined;
   items: Array<YTItems>;
   etag: string;
   pageInfo: PageInfo;
@@ -44,6 +45,7 @@ export type thumbinal = {
 export const defaultYTResponse: YTResponseTypes = {
   kind: "",
   nextPageToken: "",
+  prevPageToken: "",
   etag: "",
   items: [],
   regionCode: "",

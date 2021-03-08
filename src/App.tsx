@@ -17,7 +17,7 @@ function App() {
           <main className=" h-full m-0 py-2 md:p-6 bg-gray-50">
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/search" component={SearchPage} />
+              <Route path="/search/:search_query" component={SearchPage} />
             </Switch>
           </main>
         </Router>

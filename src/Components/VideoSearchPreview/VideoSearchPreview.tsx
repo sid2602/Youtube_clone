@@ -26,7 +26,7 @@ export default function VideoSearchPreview({ video }: Props) {
           </p>
         </Link>
         <Link to="/canel">
-          <p className="transform hover:scale-110  transition md:hover:translate-x-8 lg:hover:translate-x-10 hover:translate-x-4">
+          <p className=" w-1/3 transform hover:scale-110  transition md:hover:translate-x-8 lg:hover:translate-x-10 hover:translate-x-4">
             {video.snippet.channelTitle}
           </p>
         </Link>

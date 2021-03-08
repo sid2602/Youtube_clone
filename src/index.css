@@ -12,6 +12,7 @@ body,
 #root,
 .App {
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 button:focus {

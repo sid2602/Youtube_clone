@@ -3,11 +3,16 @@ import YTResponseTypes, { defaultYTResponse } from "../Types/YoutubeResponse";
 import axios from "axios";
 import defRes from "./defRes.json";
 import defSearchRes from "./defSearchRes.json";
-import { resolve } from "node:path";
+
 type VideoContextType = {
   videos: YTResponseTypes;
   foundedMovies: YTResponseTypes;
   searchVideo: (title: string) => {};
+  getMoreVideos: (
+    title: string,
+    pageToken: string,
+    videosType: YTResponseTypes
+  ) => {};
   error: string;
   loading: boolean;
 };
@@ -16,6 +21,11 @@ const defaultContext = {
   videos: defaultYTResponse,
   foundedMovies: defaultYTResponse,
   searchVideo: (title: string) => ({}),
+  getMoreVideos: (
+    title: string,
+    pageToken: string,
+    videosType: YTResponseTypes
+  ) => ({}),
   error: "",
   loading: false,
 };
@@ -44,18 +54,19 @@ export default function VideoProvider({ children }: VideoProviderType) {
     const getVideos = async () => {
       setLoading(true);
       try {
-        // const { data } = await axios.get(
-        //   `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&key=${process.env.REACT_APP_YT_KEY}`
-        // );
+        if (process.env.REACT_APP_GET_FROM_API) {
+          const { data } = await axios.get(
+            `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&key=${process.env.REACT_APP_YT_KEY}`
+          );
 
-        // // setVideos(data);
-        // console.log(data);
-        // console.log(defRes);
-        //To don't use credencial only test
-        setTimeout(() => {
-          setVideos(defRes);
+          setVideos(data);
           setLoading(false);
-        }, 2000);
+        } else {
+          setTimeout(() => {
+            setVideos(defRes);
+            setLoading(false);
+          }, 2000);
+        }
       } catch {
         setError("can't get youtube videos");
         setLoading(false);
@@ -68,19 +79,54 @@ export default function VideoProvider({ children }: VideoProviderType) {
   const searchVideo = async (title: string) => {
     setLoading(true);
     try {
-      // const { data } = await axios.get(
-      //   `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${title}&key=${process.env.REACT_APP_YT_KEY}`
-      // );
+      if (process.env.REACT_APP_GET_FROM_API) {
+        const { data } = await axios.get(
+          `https://youtube.googleapis.com/youtube/v3/search?part=snippet&order=searchSortUnspecified&q=${title}&key=${process.env.REACT_APP_YT_KEY}`
+        );
 
-      // setFoundedMovies(data);
-
-      setTimeout(() => {
-        setFoundedMovies(defSearchRes);
+        setFoundedMovies(data);
         setLoading(false);
-      }, 2000);
+      } else {
+        setTimeout(() => {
+          setFoundedMovies(defSearchRes);
+          setLoading(false);
+        }, 2000);
+      }
     } catch {
       setError("can't found a videos");
       setLoading(false);
+    }
+  };
+
+  const getMoreVideos = async (
+    title: string,
+    pageToken: string,
+    videosType: YTResponseTypes
+  ) => {
+    try {
+      const query = title ? `&q=${title}` : "";
+      const token = pageToken ? `&pageToken=${pageToken}` : "";
+      const mockedData = videosType === videos ? defRes : defSearchRes;
+      const setState = videosType === videos ? setVideos : setFoundedMovies;
+
+      if (process.env.REACT_APP_GET_FROM_API) {
+        const { data } = await axios.get(
+          `https://youtube.googleapis.com/youtube/v3/search?part=snippet${token}&order=searchSortUnspecified${query}&key=${process.env.REACT_APP_YT_KEY}`
+        );
+
+        const items = [...videosType.items, ...data.items];
+        const newItems = { ...data, items: items };
+        setState(newItems);
+      } else {
+        setTimeout(() => {
+          const items = [...videosType.items, ...mockedData.items];
+          const data = { ...mockedData, items: items };
+
+          setState(data);
+        }, 2000);
+      }
+    } catch {
+      setError("can't get more videos");
     }
   };
 
@@ -88,6 +134,7 @@ export default function VideoProvider({ children }: VideoProviderType) {
     videos,
     foundedMovies,
     searchVideo,
+    getMoreVideos,
     error,
     loading,
   };
