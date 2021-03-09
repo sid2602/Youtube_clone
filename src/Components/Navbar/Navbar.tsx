@@ -32,7 +32,11 @@ export default function Navbar() {
           <FontAwesomeIcon icon={faBars} />
         </button>
         <Link to="/">
-          <img src="img/logo.png" className="w-20 md:w-28 " alt="logo" />
+          <img
+            src={process.env.PUBLIC_URL + "/img/logo.png"}
+            className="w-20 md:w-28 "
+            alt="logo"
+          />
         </Link>
       </div>
       <form

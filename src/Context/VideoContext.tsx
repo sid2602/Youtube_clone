@@ -56,7 +56,7 @@ export default function VideoProvider({ children }: VideoProviderType) {
       try {
         if (process.env.REACT_APP_GET_FROM_API) {
           const { data } = await axios.get(
-            `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&key=${process.env.REACT_APP_YT_KEY}`
+            `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&type=video&key=${process.env.REACT_APP_YT_KEY}`
           );
 
           setVideos(data);
@@ -106,12 +106,15 @@ export default function VideoProvider({ children }: VideoProviderType) {
     try {
       const query = title ? `&q=${title}` : "";
       const token = pageToken ? `&pageToken=${pageToken}` : "";
+      const type = !title ? "&type=video" : "";
       const mockedData = videosType === videos ? defRes : defSearchRes;
       const setState = videosType === videos ? setVideos : setFoundedMovies;
 
       if (process.env.REACT_APP_GET_FROM_API) {
         const { data } = await axios.get(
-          `https://youtube.googleapis.com/youtube/v3/search?part=snippet${token}&order=searchSortUnspecified${query}&key=${process.env.REACT_APP_YT_KEY}`
+          `https://youtube.googleapis.com/youtube/v3/search?part=snippet${token}&order=searchSortUnspecified${
+            query + type
+          }&key=${process.env.REACT_APP_YT_KEY}`
         );
 
         const items = [...videosType.items, ...data.items];

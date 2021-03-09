@@ -11,3 +11,12 @@ export default function Loading() {
     ></Loader>
   );
 }
+
+export const MainLoader = () => {
+  return (
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+      <Loading />
+      <h2 className="p-2">Loading</h2>
+    </div>
+  );
+};
