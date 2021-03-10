@@ -1,9 +1,13 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import YTResponseTypes, { defaultYTResponse } from "../Types/YoutubeResponse";
+import YTResponseTypes, {
+  defaultYTResponse,
+  defaultVideoResponse,
+  SpecificVideo,
+} from "../Types/YoutubeResponse";
 import axios from "axios";
 import defRes from "./defRes.json";
 import defSearchRes from "./defSearchRes.json";
-
+import defResVideo from "./defResVideo.json";
 type VideoContextType = {
   videos: YTResponseTypes;
   foundedMovies: YTResponseTypes;
@@ -13,6 +17,8 @@ type VideoContextType = {
     pageToken: string,
     videosType: YTResponseTypes
   ) => {};
+  specificVideo: SpecificVideo;
+  getSpecificVideo: (videoId: string) => {};
   error: string;
   loading: boolean;
 };
@@ -26,6 +32,8 @@ const defaultContext = {
     pageToken: string,
     videosType: YTResponseTypes
   ) => ({}),
+  specificVideo: defaultVideoResponse,
+  getSpecificVideo: (videoId: string) => ({}),
   error: "",
   loading: false,
 };
@@ -47,6 +55,11 @@ export default function VideoProvider({ children }: VideoProviderType) {
   const [foundedMovies, setFoundedMovies] = useState<YTResponseTypes | any>(
     defaultYTResponse
   );
+
+  const [specificVideo, setSpecificVideo] = useState<SpecificVideo | any>(
+    defaultVideoResponse
+  );
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -133,11 +146,29 @@ export default function VideoProvider({ children }: VideoProviderType) {
     }
   };
 
+  const getSpecificVideo = async (videoId: string) => {
+    try {
+      if (!process.env.REACT_APP_GET_FROM_API) {
+        const { data } = await axios.get(
+          `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.REACT_APP_YT_KEY}`
+        );
+
+        setSpecificVideo(data);
+      } else {
+        setSpecificVideo(defResVideo);
+      }
+    } catch {
+      setError("can't get a video");
+    }
+  };
+
   const values = {
     videos,
     foundedMovies,
     searchVideo,
     getMoreVideos,
+    specificVideo,
+    getSpecificVideo,
     error,
     loading,
   };

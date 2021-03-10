@@ -10,7 +10,8 @@
 html,
 body,
 #root,
-.App {
+.App,
+main {
   min-height: 100vh;
   overflow-x: hidden;
 }
