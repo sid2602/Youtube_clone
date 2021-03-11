@@ -1,13 +1,16 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import YTResponseTypes, {
-  defaultYTResponse,
-  defaultVideoResponse,
-  SpecificVideo,
-} from "../Types/YoutubeResponse";
+import { YTResponseTypes, defaultYTResponse } from "../Types/YoutubeResponse";
+import { defaultVideoResponse, SpecificVideo } from "../Types/VideoResponse";
+import {
+  defaultAuthorResponse,
+  AuthorResponse,
+} from "../Types/VideoAuthorResponse";
 import axios from "axios";
 import defRes from "./defRes.json";
 import defSearchRes from "./defSearchRes.json";
 import defResVideo from "./defResVideo.json";
+import defResChannel from "./defResChannel.json";
+
 type VideoContextType = {
   videos: YTResponseTypes;
   foundedMovies: YTResponseTypes;
@@ -19,6 +22,8 @@ type VideoContextType = {
   ) => {};
   specificVideo: SpecificVideo;
   getSpecificVideo: (videoId: string) => {};
+  channel: AuthorResponse;
+  getChanelDetails: (channelId: string) => {};
   error: string;
   loading: boolean;
 };
@@ -34,6 +39,8 @@ const defaultContext = {
   ) => ({}),
   specificVideo: defaultVideoResponse,
   getSpecificVideo: (videoId: string) => ({}),
+  channel: defaultAuthorResponse,
+  getChanelDetails: (channelId: string) => ({}),
   error: "",
   loading: false,
 };
@@ -58,6 +65,10 @@ export default function VideoProvider({ children }: VideoProviderType) {
 
   const [specificVideo, setSpecificVideo] = useState<SpecificVideo | any>(
     defaultVideoResponse
+  );
+
+  const [channel, setChannel] = useState<AuthorResponse | any>(
+    defaultAuthorResponse
   );
 
   const [error, setError] = useState("");
@@ -96,7 +107,6 @@ export default function VideoProvider({ children }: VideoProviderType) {
         const { data } = await axios.get(
           `https://youtube.googleapis.com/youtube/v3/search?part=snippet&order=searchSortUnspecified&q=${title}&key=${process.env.REACT_APP_YT_KEY}`
         );
-
         setFoundedMovies(data);
         setLoading(false);
       } else {
@@ -148,9 +158,9 @@ export default function VideoProvider({ children }: VideoProviderType) {
 
   const getSpecificVideo = async (videoId: string) => {
     try {
-      if (!process.env.REACT_APP_GET_FROM_API) {
+      if (process.env.REACT_APP_GET_FROM_API) {
         const { data } = await axios.get(
-          `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.REACT_APP_YT_KEY}`
+          `https://youtube.googleapis.com/youtube/v3/videos?part=statistics&part=snippet&id=${videoId}&key=${process.env.REACT_APP_YT_KEY}`
         );
 
         setSpecificVideo(data);
@@ -162,6 +172,22 @@ export default function VideoProvider({ children }: VideoProviderType) {
     }
   };
 
+  const getChanelDetails = async (channelId: string) => {
+    try {
+      if (process.env.REACT_APP_GET_FROM_API) {
+        const { data } = await axios.get(
+          `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=${channelId}&key=${process.env.REACT_APP_YT_KEY}`
+        );
+
+        setChannel(data);
+      } else {
+        setChannel(defResChannel);
+      }
+    } catch {
+      setError("Can't get chanel");
+    }
+  };
+
   const values = {
     videos,
     foundedMovies,
@@ -169,6 +195,8 @@ export default function VideoProvider({ children }: VideoProviderType) {
     getMoreVideos,
     specificVideo,
     getSpecificVideo,
+    channel,
+    getChanelDetails,
     error,
     loading,
   };

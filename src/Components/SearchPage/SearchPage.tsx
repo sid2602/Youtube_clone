@@ -15,38 +15,40 @@ const SearchPage = () => {
     if (search_query && foundedMovies.items.length === 0) {
       searchVideo(search_query);
     }
-  }, []);
+  }, [search_query]);
 
   return (
     <section className="px-4 w-full max-w-screen-lg mx-auto">
-      <InfiniteScroll
-        dataLength={foundedMovies.items.length}
-        next={() =>
-          getMoreVideos(
-            search_query,
-            foundedMovies.nextPageToken,
-            foundedMovies
-          )
-        }
-        hasMore={
-          foundedMovies.items.length > 0 && foundedMovies.nextPageToken
-            ? true
-            : false
-        }
-        loader={
-          <div className="flex justify-center">
-            <Loader />
-          </div>
-        }
-      >
-        {foundedMovies.items.map((item) =>
-          item.id.kind === "youtube#channel" ? (
-            <ChanelSearchPreview chanel={item} key={item.etag} />
-          ) : (
-            <VideoSearchPreview video={item} key={item.etag} />
-          )
-        )}
-      </InfiniteScroll>
+      {foundedMovies.items.length > 0 && (
+        <InfiniteScroll
+          dataLength={foundedMovies.items.length}
+          next={() =>
+            getMoreVideos(
+              search_query,
+              foundedMovies.nextPageToken,
+              foundedMovies
+            )
+          }
+          hasMore={
+            foundedMovies.items.length > 0 && foundedMovies.nextPageToken
+              ? true
+              : false
+          }
+          loader={
+            <div className="flex justify-center">
+              <Loader />
+            </div>
+          }
+        >
+          {foundedMovies.items.map((item) =>
+            item.id.kind === "youtube#channel" ? (
+              <ChanelSearchPreview chanel={item} key={item.etag} />
+            ) : (
+              <VideoSearchPreview video={item} key={item.etag} />
+            )
+          )}
+        </InfiniteScroll>
+      )}
       )
     </section>
   );

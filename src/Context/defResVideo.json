@@ -1,75 +1,87 @@
 {
   "kind": "youtube#videoListResponse",
-  "etag": "rxrmLAf7dnoz71DM-QQkQyPderw",
+  "etag": "6k_c5hWajpTapqLNhaYR1OoRJ0E",
   "items": [
     {
       "kind": "youtube#video",
-      "etag": "p1bL6ktvsLxG76jY_CIiWhUyfcs",
-      "id": "RWrCv9WrFcw",
+      "etag": "vqxpmwb3V0QhdZ0ZTuJt4m6LBlo",
+      "id": "Ei0XrVKU94s",
       "snippet": {
-        "publishedAt": "2021-03-09T14:18:49Z",
-        "channelId": "UC4TYJ_RcqwL9lAZgkQlk11g",
-        "title": "WIELKI TEST KALORII *zgadujemy makrosy*",
-        "description": "Oryginalny WK DZIK® oraz Najważniejsza suplementacja: https://wkdzik.com/qh74 \nOdtłuszczone Masło Orzechowe: https://wkdzik.com/8u31 𝘾𝙕𝙔𝙏𝘼𝙅 𝘿𝘼𝙇𝙀𝙅 ⬇⬇⬇Nasze kanały: WK GAMING: https://bit.ly/WK-GAMING (link skrócony)\nWKDZIK PL (wszystko o naszym biznesie): http://bit.ly/sub-wksklep (link skrócony)\nKuchnia jedz co chcesz: http://bit.ly/sub-kuchnia (link skrócony)\nWarszawski Koks: http://bit.ly/subskrybujwk (link skrócony)\nEkipa WK: http://bit.ly/sub_ekipawk (link skrócony)\nSakerWK *merytoryka*: http://bit.ly/SakerWK-yt (link skrócony)\nOwcaWK: https://bit.ly/owca-sub (link skrócony)\nPonczek Endomorfik: https://bit.ly/ponczek-sub (link skrócony)\nRobercik Dynamit: http://bit.ly/Robercik-Dynamit (link skrócony)\n\n------\nDiscord WK (Pogadaj i pograj z nami!): https://bit.ly/DISCORD-EKIPAWK (link skrócony)\n------\n\nUstaw logo WK DZIK na zdjęcie profilowe: http://produkt.wkdzik.pl/399aGXU (link skrócony)\n\n------\n\nNasza grupa Armia WK: https://www.facebook.com/groups/armiawk/\n------\n\nProdukty, których używamy na co dzień:\n\nBIAŁKO Dobre WHEY™: https://wkdzik.com/HNyL\nSłodycze bez wyrzutów sumienia: https://wkdzik.com/oGfi\nSuplementy i odżywianie: https://wkdzik.com/avam\nCYTRULINA SMAKOWA PREMIUM: https://wkdzik.com/reMM\nKREATYNA SMAKOWA MONOHYDRAT: https://wkdzik.com/sQXj\nBOMBA💣💣💣 - NAJMOCNIEJSZA PRZED-TRENINGÓWKA: https://wkdzik.com/V9uh\n\nOryginalne ubrania WK DZIK®: https://wkdzik.com/9QEF\n\nInstagram: \nWKSKLEP: https://www.instagram.com/wksklep\nWK: https://www.instagram.com/warszawskikoks\nPonczek: https://www.instagram.com/ponczek_endomorfik\nOwca: https://www.instagram.com/owcawk\nSaker: https://www.instagram.com/sakerwk\nRobercik: https://www.instagram.com/robercik_dynamit\n\nWspółpraca komercyjna: warszawskikoks@gmail.com\n\n#wk #warszawskikoks #ekipa",
+        "publishedAt": "2021-03-03T09:00:10Z",
+        "channelId": "UCsCWnGG5Xia9jjpR3v4inNg",
+        "title": "NAJŚMIESZNIEJSZE MOMENTY - WARSZAWSKI KOKS #2",
+        "description": "👍 Zostaw lajka jeżeli film ci się spodobał :D\n🔥 Subskrybuj kanał, aby nie przegapić żadnego materiału :D\n🔔 Zaznacz dzwonek, aby być na bieżąco z nowymi filmami :D\n\nTWÓRCA:\nhttps://www.youtube.com/user/WarszawskiKoks",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/RWrCv9WrFcw/default.jpg",
+            "url": "https://i.ytimg.com/vi/Ei0XrVKU94s/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/RWrCv9WrFcw/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/Ei0XrVKU94s/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/RWrCv9WrFcw/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/Ei0XrVKU94s/hqdefault.jpg",
             "width": 480,
             "height": 360
           },
           "standard": {
-            "url": "https://i.ytimg.com/vi/RWrCv9WrFcw/sddefault.jpg",
+            "url": "https://i.ytimg.com/vi/Ei0XrVKU94s/sddefault.jpg",
             "width": 640,
             "height": 480
           },
           "maxres": {
-            "url": "https://i.ytimg.com/vi/RWrCv9WrFcw/maxresdefault.jpg",
+            "url": "https://i.ytimg.com/vi/Ei0XrVKU94s/maxresdefault.jpg",
             "width": 1280,
             "height": 720
           }
         },
-        "channelTitle": "Kuchnia WK",
+        "channelTitle": "Shoty_WK",
         "tags": [
-          "kuchnia",
           "wk",
-          "warszawski",
-          "koks",
+          "ekipa wk",
+          "wk funny moments",
+          "wk najsmieszniejsze momenty",
+          "wk smieszne momenty",
+          "ekipa wk funny moments",
+          "wk gaming",
+          "wk 5 sekund",
+          "warszawski koks",
+          "warszawski koks funny moments",
+          "shoty wk",
+          "wk shoty",
+          "funny moments wk",
+          "najlepsze momenty wk",
+          "wkdzik",
+          "wk najlepsze momenty",
+          "ekipa wk najsmieszniejsze momenty",
           "ekipa",
-          "owca",
-          "ponczek",
-          "robur",
-          "robercik",
-          "dynamit",
-          "saker",
-          "endomorfik",
-          "kapitan",
-          "challenge",
-          "wyzwanie",
-          "pojedynek",
-          "lifestyle",
-          "dieta",
-          "najlepsza",
-          "odchudzanie",
-          "szczupła",
-          "płaski",
-          "brzuch"
+          "5 sekund wk",
+          "ekipa wk 5 sekund",
+          "wk śmieszne momenty 2020",
+          "wk śmieszne momenty 2019",
+          "wk ekipa",
+          "wk 2020",
+          "kuchnia wk",
+          "robur funny moments",
+          "owca wk",
+          "owcawk funny moments"
         ],
         "categoryId": "22",
         "liveBroadcastContent": "none",
         "localized": {
-          "title": "WIELKI TEST KALORII *zgadujemy makrosy*",
-          "description": "Oryginalny WK DZIK® oraz Najważniejsza suplementacja: https://wkdzik.com/qh74 \nOdtłuszczone Masło Orzechowe: https://wkdzik.com/8u31 𝘾𝙕𝙔𝙏𝘼𝙅 𝘿𝘼𝙇𝙀𝙅 ⬇⬇⬇Nasze kanały: WK GAMING: https://bit.ly/WK-GAMING (link skrócony)\nWKDZIK PL (wszystko o naszym biznesie): http://bit.ly/sub-wksklep (link skrócony)\nKuchnia jedz co chcesz: http://bit.ly/sub-kuchnia (link skrócony)\nWarszawski Koks: http://bit.ly/subskrybujwk (link skrócony)\nEkipa WK: http://bit.ly/sub_ekipawk (link skrócony)\nSakerWK *merytoryka*: http://bit.ly/SakerWK-yt (link skrócony)\nOwcaWK: https://bit.ly/owca-sub (link skrócony)\nPonczek Endomorfik: https://bit.ly/ponczek-sub (link skrócony)\nRobercik Dynamit: http://bit.ly/Robercik-Dynamit (link skrócony)\n\n------\nDiscord WK (Pogadaj i pograj z nami!): https://bit.ly/DISCORD-EKIPAWK (link skrócony)\n------\n\nUstaw logo WK DZIK na zdjęcie profilowe: http://produkt.wkdzik.pl/399aGXU (link skrócony)\n\n------\n\nNasza grupa Armia WK: https://www.facebook.com/groups/armiawk/\n------\n\nProdukty, których używamy na co dzień:\n\nBIAŁKO Dobre WHEY™: https://wkdzik.com/HNyL\nSłodycze bez wyrzutów sumienia: https://wkdzik.com/oGfi\nSuplementy i odżywianie: https://wkdzik.com/avam\nCYTRULINA SMAKOWA PREMIUM: https://wkdzik.com/reMM\nKREATYNA SMAKOWA MONOHYDRAT: https://wkdzik.com/sQXj\nBOMBA💣💣💣 - NAJMOCNIEJSZA PRZED-TRENINGÓWKA: https://wkdzik.com/V9uh\n\nOryginalne ubrania WK DZIK®: https://wkdzik.com/9QEF\n\nInstagram: \nWKSKLEP: https://www.instagram.com/wksklep\nWK: https://www.instagram.com/warszawskikoks\nPonczek: https://www.instagram.com/ponczek_endomorfik\nOwca: https://www.instagram.com/owcawk\nSaker: https://www.instagram.com/sakerwk\nRobercik: https://www.instagram.com/robercik_dynamit\n\nWspółpraca komercyjna: warszawskikoks@gmail.com\n\n#wk #warszawskikoks #ekipa"
+          "title": "NAJŚMIESZNIEJSZE MOMENTY - WARSZAWSKI KOKS #2",
+          "description": "👍 Zostaw lajka jeżeli film ci się spodobał :D\n🔥 Subskrybuj kanał, aby nie przegapić żadnego materiału :D\n🔔 Zaznacz dzwonek, aby być na bieżąco z nowymi filmami :D\n\nTWÓRCA:\nhttps://www.youtube.com/user/WarszawskiKoks"
         }
+      },
+      "statistics": {
+        "viewCount": "10285",
+        "likeCount": "325",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "15"
       }
     }
   ],

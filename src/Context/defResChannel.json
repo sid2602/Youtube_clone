@@ -1,0 +1,48 @@
+{
+  "kind": "youtube#channelListResponse",
+  "etag": "dAWVi67wJylHRsuT6waODSENs0A",
+  "pageInfo": {
+    "totalResults": 1,
+    "resultsPerPage": 5
+  },
+  "items": [
+    {
+      "kind": "youtube#channel",
+      "etag": "ycjcQwLct2dTj-7_A11lc_DfdLE",
+      "id": "UCsCWnGG5Xia9jjpR3v4inNg",
+      "snippet": {
+        "title": "Shoty_WK",
+        "description": "",
+        "publishedAt": "2019-06-15T20:01:05Z",
+        "thumbnails": {
+          "default": {
+            "url": "https://yt3.ggpht.com/ytc/AAUvwnjd5j4bPQNyiRiwdk4oU7r2WyRQw1gUvPkDsHn0=s88-c-k-c0x00ffffff-no-rj",
+            "width": 88,
+            "height": 88
+          },
+          "medium": {
+            "url": "https://yt3.ggpht.com/ytc/AAUvwnjd5j4bPQNyiRiwdk4oU7r2WyRQw1gUvPkDsHn0=s240-c-k-c0x00ffffff-no-rj",
+            "width": 240,
+            "height": 240
+          },
+          "high": {
+            "url": "https://yt3.ggpht.com/ytc/AAUvwnjd5j4bPQNyiRiwdk4oU7r2WyRQw1gUvPkDsHn0=s800-c-k-c0x00ffffff-no-rj",
+            "width": 800,
+            "height": 800
+          }
+        },
+        "localized": {
+          "title": "Shoty_WK",
+          "description": ""
+        },
+        "country": "PL"
+      },
+      "statistics": {
+        "viewCount": "654519",
+        "subscriberCount": "2360",
+        "hiddenSubscriberCount": false,
+        "videoCount": "26"
+      }
+    }
+  ]
+}
