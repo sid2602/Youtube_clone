@@ -8,12 +8,17 @@ import { useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import withHandleErrorAndLoading from "../HOC/withHandleErrorAndLoading";
 const SearchPage = () => {
-  const { foundedMovies, searchVideo, getMoreVideos } = useVideo();
+  const {
+    foundedMovies,
+    searchVideo,
+    getMoreVideos,
+    lastSearchQuery,
+  } = useVideo();
 
   const { search_query } = useParams<{ search_query: string }>();
   useEffect(() => {
-    if (search_query && foundedMovies.items.length === 0) {
-      searchVideo(search_query);
+    if (search_query && lastSearchQuery !== search_query) {
+      searchVideo(search_query, search_query);
     }
   }, [search_query]);
 

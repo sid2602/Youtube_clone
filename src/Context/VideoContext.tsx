@@ -5,16 +5,22 @@ import {
   defaultAuthorResponse,
   AuthorResponse,
 } from "../Types/VideoAuthorResponse";
+import {
+  defaultCommentsResponse,
+  VideoCommentsResponse,
+} from "../Types/VideoCommentsResponse";
+
 import axios from "axios";
 import defRes from "./defRes.json";
 import defSearchRes from "./defSearchRes.json";
 import defResVideo from "./defResVideo.json";
 import defResChannel from "./defResChannel.json";
+import defResComments from "./defResComments.json";
 
 type VideoContextType = {
   videos: YTResponseTypes;
   foundedMovies: YTResponseTypes;
-  searchVideo: (title: string) => {};
+  searchVideo: (title: string, search_query: string) => {};
   getMoreVideos: (
     title: string,
     pageToken: string,
@@ -24,6 +30,9 @@ type VideoContextType = {
   getSpecificVideo: (videoId: string) => {};
   channel: AuthorResponse;
   getChanelDetails: (channelId: string) => {};
+  lastSearchQuery: string;
+  comments: VideoCommentsResponse;
+  getVideoComments: (videoId: string) => {};
   error: string;
   loading: boolean;
 };
@@ -31,7 +40,7 @@ type VideoContextType = {
 const defaultContext = {
   videos: defaultYTResponse,
   foundedMovies: defaultYTResponse,
-  searchVideo: (title: string) => ({}),
+  searchVideo: (title: string, search_query: string) => ({}),
   getMoreVideos: (
     title: string,
     pageToken: string,
@@ -41,6 +50,9 @@ const defaultContext = {
   getSpecificVideo: (videoId: string) => ({}),
   channel: defaultAuthorResponse,
   getChanelDetails: (channelId: string) => ({}),
+  comments: defaultCommentsResponse,
+  getVideoComments: (videoId: string) => ({}),
+  lastSearchQuery: "",
   error: "",
   loading: false,
 };
@@ -71,6 +83,12 @@ export default function VideoProvider({ children }: VideoProviderType) {
     defaultAuthorResponse
   );
 
+  const [comments, setComments] = useState<VideoCommentsResponse | any>(
+    defaultCommentsResponse
+  );
+
+  const [lastSearchQuery, setLastSearchQuery] = useState("");
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -100,13 +118,15 @@ export default function VideoProvider({ children }: VideoProviderType) {
     getVideos();
   }, []);
 
-  const searchVideo = async (title: string) => {
+  const searchVideo = async (title: string, search_query: string) => {
+    setLastSearchQuery(search_query);
     setLoading(true);
     try {
       if (process.env.REACT_APP_GET_FROM_API) {
         const { data } = await axios.get(
           `https://youtube.googleapis.com/youtube/v3/search?part=snippet&order=searchSortUnspecified&q=${title}&key=${process.env.REACT_APP_YT_KEY}`
         );
+
         setFoundedMovies(data);
         setLoading(false);
       } else {
@@ -140,9 +160,11 @@ export default function VideoProvider({ children }: VideoProviderType) {
           }&key=${process.env.REACT_APP_YT_KEY}`
         );
 
-        const items = [...videosType.items, ...data.items];
-        const newItems = { ...data, items: items };
-        setState(newItems);
+        setTimeout(() => {
+          const items = [...videosType.items, ...data.items];
+          const newItems = { ...data, items: items };
+          setState(newItems);
+        }, 1000);
       } else {
         setTimeout(() => {
           const items = [...videosType.items, ...mockedData.items];
@@ -188,6 +210,21 @@ export default function VideoProvider({ children }: VideoProviderType) {
     }
   };
 
+  const getVideoComments = async (videoId: string) => {
+    try {
+      if (process.env.REACT_APP_GET_FROM_API) {
+        const { data } = await axios.get(
+          `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults=10&videoId=${videoId}&key=${process.env.REACT_APP_YT_KEY}`
+        );
+        setComments(data);
+      } else {
+        setComments(defResComments);
+      }
+    } catch {
+      setError("Can't get comments to this video");
+    }
+  };
+
   const values = {
     videos,
     foundedMovies,
@@ -197,6 +234,9 @@ export default function VideoProvider({ children }: VideoProviderType) {
     getSpecificVideo,
     channel,
     getChanelDetails,
+    lastSearchQuery,
+    comments,
+    getVideoComments,
     error,
     loading,
   };

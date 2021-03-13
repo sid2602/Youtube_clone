@@ -2,7 +2,7 @@ import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type VideoActionProps = {
-  count: string;
+  count: string | number;
   icon: IconDefinition;
 };
 

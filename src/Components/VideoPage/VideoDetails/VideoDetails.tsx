@@ -1,12 +1,14 @@
-import React from "react";
 import { useVideo } from "../../../Context/VideoContext";
+
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
 import VideoAction from "./VideoAction";
 import VideoTitle from "./VideoTitle";
 export default function VideoDetails() {
   const { specificVideo } = useVideo();
+
   const [item] = specificVideo.items;
+
   return (
     <>
       {specificVideo.items.length > 0 && (
