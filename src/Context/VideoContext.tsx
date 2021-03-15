@@ -33,6 +33,7 @@ type VideoContextType = {
   lastSearchQuery: string;
   comments: VideoCommentsResponse;
   getVideoComments: (videoId: string) => {};
+  commentsError: string;
   error: string;
   loading: boolean;
 };
@@ -53,6 +54,7 @@ const defaultContext = {
   comments: defaultCommentsResponse,
   getVideoComments: (videoId: string) => ({}),
   lastSearchQuery: "",
+  commentsError: "",
   error: "",
   loading: false,
 };
@@ -86,6 +88,7 @@ export default function VideoProvider({ children }: VideoProviderType) {
   const [comments, setComments] = useState<VideoCommentsResponse | any>(
     defaultCommentsResponse
   );
+  const [commentsError, setCommentsError] = useState("");
 
   const [lastSearchQuery, setLastSearchQuery] = useState("");
 
@@ -189,7 +192,8 @@ export default function VideoProvider({ children }: VideoProviderType) {
       } else {
         setSpecificVideo(defResVideo);
       }
-    } catch {
+    } catch (error) {
+      console.log(error);
       setError("can't get a video");
     }
   };
@@ -205,7 +209,8 @@ export default function VideoProvider({ children }: VideoProviderType) {
       } else {
         setChannel(defResChannel);
       }
-    } catch {
+    } catch (error) {
+      console.log(error);
       setError("Can't get chanel");
     }
   };
@@ -220,8 +225,8 @@ export default function VideoProvider({ children }: VideoProviderType) {
       } else {
         setComments(defResComments);
       }
-    } catch {
-      setError("Can't get comments to this video");
+    } catch (error) {
+      setCommentsError("Komentarze nie są dostępne");
     }
   };
 
@@ -237,6 +242,7 @@ export default function VideoProvider({ children }: VideoProviderType) {
     lastSearchQuery,
     comments,
     getVideoComments,
+    commentsError,
     error,
     loading,
   };

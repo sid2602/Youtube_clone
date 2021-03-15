@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useVideo } from "../../Context/VideoContext";
 import withHandleErrorAndLoading from "../HOC/withHandleErrorAndLoading";
@@ -9,14 +9,16 @@ import VideoAuthorInfo from "./VideoDetails/VideoAuthorInfo";
 import VideoDescription from "./VideoDetails/VideoDescription";
 import VideoDetailsProvider from "../../Context/VideoDetailsContext";
 import VideoComments from "./VideoDetails/VideoComments";
+import VideoPropositions from "./VideoDetails/VideoPropositons";
+
 const VideoPage = () => {
   const { search_query } = useParams<{ search_query: string }>();
   const {
     getSpecificVideo,
     specificVideo,
     getChanelDetails,
-    comments,
     getVideoComments,
+    videos,
   } = useVideo();
 
   useEffect(() => {
@@ -32,8 +34,8 @@ const VideoPage = () => {
   }, [search_query, specificVideo]);
 
   return (
-    <section>
-      <article className="w-full lg:w-2/3 sm:p-10">
+    <section className="flex flex-col lg:flex-row sm:p-10">
+      <section className="w-full  ">
         <Video />
         <VideoDetailsProvider>
           <VideoDetails />
@@ -41,7 +43,10 @@ const VideoPage = () => {
           <VideoDescription />
           <VideoComments />
         </VideoDetailsProvider>
-      </article>
+      </section>
+      <section className="max-w-screen-sm px-4">
+        <VideoPropositions />
+      </section>
     </section>
   );
 };

@@ -16,6 +16,7 @@ const SearchPage = () => {
   } = useVideo();
 
   const { search_query } = useParams<{ search_query: string }>();
+
   useEffect(() => {
     if (search_query && lastSearchQuery !== search_query) {
       searchVideo(search_query, search_query);
@@ -23,7 +24,7 @@ const SearchPage = () => {
   }, [search_query]);
 
   return (
-    <section className="px-4 w-full max-w-screen-lg mx-auto">
+    <section className="px-4 max-w-screen-xl mx-auto">
       {foundedMovies.items.length > 0 && (
         <InfiniteScroll
           dataLength={foundedMovies.items.length}
@@ -49,7 +50,11 @@ const SearchPage = () => {
             item.id.kind === "youtube#channel" ? (
               <ChanelSearchPreview chanel={item} key={item.etag} />
             ) : (
-              <VideoSearchPreview video={item} key={item.etag} />
+              <VideoSearchPreview
+                video={item}
+                key={item.etag}
+                isVideoPage={false}
+              />
             )
           )}
         </InfiniteScroll>
