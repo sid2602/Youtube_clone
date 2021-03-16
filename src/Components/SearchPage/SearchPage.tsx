@@ -19,7 +19,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     if (search_query && lastSearchQuery !== search_query) {
-      searchVideo(search_query, search_query);
+      searchVideo(search_query, search_query, false);
     }
   }, [search_query]);
 
@@ -54,6 +54,7 @@ const SearchPage = () => {
                 video={item}
                 key={item.etag}
                 isVideoPage={false}
+                isChannelPage={false}
               />
             )
           )}

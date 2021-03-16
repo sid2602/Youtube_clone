@@ -11,6 +11,7 @@ export default function VideoPropositons() {
           video={item}
           key={item.id.videoId}
           isVideoPage={true}
+          isChannelPage={false}
         />
       ))}
     </div>

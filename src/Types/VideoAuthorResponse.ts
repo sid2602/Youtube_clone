@@ -36,6 +36,11 @@ export type AuthorResponseItem = {
     hiddenSubscriberCount: boolean;
     videoCount: string;
   };
+  brandingSettings: {
+    image: {
+      bannerExternalUrl: string;
+    };
+  };
 };
 
 export const defaultAuthorResponse: AuthorResponse = {

@@ -20,7 +20,11 @@ import defResComments from "./defResComments.json";
 type VideoContextType = {
   videos: YTResponseTypes;
   foundedMovies: YTResponseTypes;
-  searchVideo: (title: string, search_query: string) => {};
+  searchVideo: (
+    title: string,
+    search_query: string,
+    searchChannel: boolean
+  ) => {};
   getMoreVideos: (
     title: string,
     pageToken: string,
@@ -41,7 +45,11 @@ type VideoContextType = {
 const defaultContext = {
   videos: defaultYTResponse,
   foundedMovies: defaultYTResponse,
-  searchVideo: (title: string, search_query: string) => ({}),
+  searchVideo: (
+    title: string,
+    search_query: string,
+    searchChannel: boolean
+  ) => ({}),
   getMoreVideos: (
     title: string,
     pageToken: string,
@@ -121,13 +129,19 @@ export default function VideoProvider({ children }: VideoProviderType) {
     getVideos();
   }, []);
 
-  const searchVideo = async (title: string, search_query: string) => {
+  const searchVideo = async (
+    title: string,
+    search_query: string,
+    searchChannel: boolean
+  ) => {
     setLastSearchQuery(search_query);
     setLoading(true);
     try {
       if (process.env.REACT_APP_GET_FROM_API) {
         const { data } = await axios.get(
-          `https://youtube.googleapis.com/youtube/v3/search?part=snippet&order=searchSortUnspecified&q=${title}&key=${process.env.REACT_APP_YT_KEY}`
+          `https://youtube.googleapis.com/youtube/v3/search?part=snippet&order=searchSortUnspecified${
+            searchChannel ? `&channelId=${search_query}` : `&q=${title}`
+          }&key=${process.env.REACT_APP_YT_KEY}`
         );
 
         setFoundedMovies(data);
@@ -202,7 +216,7 @@ export default function VideoProvider({ children }: VideoProviderType) {
     try {
       if (process.env.REACT_APP_GET_FROM_API) {
         const { data } = await axios.get(
-          `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=${channelId}&key=${process.env.REACT_APP_YT_KEY}`
+          `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&part=brandingSettings&id=${channelId}&key=${process.env.REACT_APP_YT_KEY}`
         );
 
         setChannel(data);
@@ -210,7 +224,6 @@ export default function VideoProvider({ children }: VideoProviderType) {
         setChannel(defResChannel);
       }
     } catch (error) {
-      console.log(error);
       setError("Can't get chanel");
     }
   };

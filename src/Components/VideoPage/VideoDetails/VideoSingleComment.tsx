@@ -16,7 +16,7 @@ const VideoSingleComment = ({ snippet }: TopLevelComment) => {
         />
       </Link>
       <div className="flex flex-col ml-4 w-4/5">
-        <Link to="/chanel">
+        <Link to={`/channel/${snippet.authorChannelId.value}`}>
           {snippet.authorDisplayName}
           <span className="text-gray-500 text-sm ml-2">
             {snippet.publishedAt.substr(0, 10)}

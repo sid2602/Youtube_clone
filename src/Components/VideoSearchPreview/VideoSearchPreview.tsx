@@ -4,11 +4,20 @@ import { Link } from "react-router-dom";
 type Props = {
   video: YTItems;
   isVideoPage: boolean;
+  isChannelPage: boolean;
 };
 
-export default function VideoSearchPreview({ video, isVideoPage }: Props) {
+export default function VideoSearchPreview({
+  video,
+  isVideoPage,
+  isChannelPage,
+}: Props) {
   return (
-    <article className=" my-6 flex flex-col items-center md:flex-row md:justify-center">
+    <article
+      className={` my-6 flex flex-col ${
+        !isChannelPage && "items-center"
+      } md:flex-row md:justify-center`}
+    >
       <Link to={"/video/" + video.id.videoId}>
         <div className="w-full flex justify-center">
           <img
@@ -28,11 +37,14 @@ export default function VideoSearchPreview({ video, isVideoPage }: Props) {
             Data publikacji: {video.snippet.publishTime.substr(0, 10)}
           </p>
         </Link>
-        <Link to="/channel">
-          <p className=" w-1/3 transform hover:scale-110  transition md:hover:translate-x-6 lg:hover:translate-x-8 hover:translate-x-4">
-            {video.snippet.channelTitle}
-          </p>
-        </Link>
+        {!isChannelPage && (
+          <Link to={`/channel/${video.snippet.channelId}`}>
+            <p className=" w-1/3 transform hover:scale-110  transition md:hover:translate-x-6 lg:hover:translate-x-8 hover:translate-x-4">
+              {video.snippet.channelTitle}
+            </p>
+          </Link>
+        )}
+
         {!isVideoPage && (
           <Link to={"/video/" + video.id.videoId}>
             <p className="text-gray-600 display-none hidden md:block">

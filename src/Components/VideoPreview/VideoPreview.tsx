@@ -23,7 +23,7 @@ export default function VideoPreview({ video }: Props) {
               {video.snippet.title}
             </p>
           </Link>
-          <Link to="/chanel">
+          <Link to={`/channel/${video.snippet.channelId}`}>
             <p className="transition  mt-2 text-sm transform hover:scale-110 hover:translate-x-4 ">
               {video.snippet.channelTitle}
             </p>

@@ -1,6 +1,6 @@
 {
   "kind": "youtube#channelListResponse",
-  "etag": "dAWVi67wJylHRsuT6waODSENs0A",
+  "etag": "u-IiJzYBSg5S0edOIDiJDaC9WVE",
   "pageInfo": {
     "totalResults": 1,
     "resultsPerPage": 5
@@ -8,7 +8,7 @@
   "items": [
     {
       "kind": "youtube#channel",
-      "etag": "ycjcQwLct2dTj-7_A11lc_DfdLE",
+      "etag": "Rxo9Y4cLV7FDq75jVge4jgoXz2w",
       "id": "UCsCWnGG5Xia9jjpR3v4inNg",
       "snippet": {
         "title": "Shoty_WK",
@@ -38,10 +38,23 @@
         "country": "PL"
       },
       "statistics": {
-        "viewCount": "654519",
-        "subscriberCount": "2360",
+        "viewCount": "669174",
+        "subscriberCount": "2400",
         "hiddenSubscriberCount": false,
         "videoCount": "26"
+      },
+      "brandingSettings": {
+        "channel": {
+          "title": "Shoty_WK",
+          "defaultTab": "Featured",
+          "showRelatedChannels": true,
+          "showBrowseView": true,
+          "profileColor": "#000000",
+          "country": "PL"
+        },
+        "image": {
+          "bannerExternalUrl": "https://yt3.ggpht.com/41NvC_11DAGcqaRfQfDFRfF0Stow_UAALaLSQmw628DYjskBRmoBLZQ0Mr6md6dmU01lZ8eEnug"
+        }
       }
     }
   ]

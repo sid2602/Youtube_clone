@@ -4,6 +4,7 @@ import VideoProvider from "./Context/VideoContext";
 import HomePage from "./Components/HomePage";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import VideoPage from "./Components/VideoPage/VideoPage";
+import ChannelPage from "./Components/ChannelPage/ChannelPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route exact path="/" component={HomePage} />
               <Route path="/search/:search_query" component={SearchPage} />
               <Route path="/video/:search_query" component={VideoPage} />
+              <Route path="/channel/:search_query" component={ChannelPage} />
             </Switch>
           </main>
         </Router>

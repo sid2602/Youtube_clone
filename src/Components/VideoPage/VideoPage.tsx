@@ -5,7 +5,7 @@ import withHandleErrorAndLoading from "../HOC/withHandleErrorAndLoading";
 import { MainLoader } from "../Loader";
 import Video from "./Video";
 import VideoDetails from "./VideoDetails/VideoDetails";
-import VideoAuthorInfo from "./VideoDetails/VideoAuthorInfo";
+import AuthorInfo from "../AuthorInfo";
 import VideoDescription from "./VideoDetails/VideoDescription";
 import VideoDetailsProvider from "../../Context/VideoDetailsContext";
 import VideoComments from "./VideoDetails/VideoComments";
@@ -39,7 +39,7 @@ const VideoPage = () => {
         <Video />
         <VideoDetailsProvider>
           <VideoDetails />
-          <VideoAuthorInfo />
+          <AuthorInfo channelPage={false} />
           <VideoDescription />
           <VideoComments />
         </VideoDetailsProvider>

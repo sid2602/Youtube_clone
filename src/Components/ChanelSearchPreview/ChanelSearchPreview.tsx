@@ -9,7 +9,7 @@ export default function ChanelSearchPreview({ chanel }: Props) {
   return (
     <article className=" my-6">
       <Link
-        to="/chanel"
+        to={`/channel/${chanel.snippet.channelId}`}
         className="flex flex-col items-center md:flex-row md:justify-center border-b-2 pb-4"
       >
         <div className="flex justify-center " style={{ maxWidth: "240px" }}>
